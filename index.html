@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Valentine Link</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; }
+    .card { display: none; border: 1px solid #ccc; padding: 20px; max-width: 360px; border-radius: 8px; }
+    .btns { margin-top: 16px; display: flex; gap: 12px; }
+    button { padding: 8px 14px; cursor: pointer; }
+    #noBtn { position: relative; }
+  </style>
+</head>
+<body>
+  <a href="#" id="openLink">Click here</a>
+
+  <div class="card" id="card">
+    <div>Will you be my valentine?</div>
+    <div class="btns">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const openLink = document.getElementById("openLink");
+    const card = document.getElementById("card");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    openLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      card.style.display = "block";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      alert("Yay! 💖");
+    });
+
+    // Prevent clicking "No" by moving it around on hover/click
+    const moveNo = () => {
+      const x = Math.random() * 160 - 80;
+      const y = Math.random() * 80 - 40;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    };
+
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      moveNo();
+    });
+  </script>
+</body>
+</html>
